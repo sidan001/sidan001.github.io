@@ -1,0 +1,532 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>java命令行调试 | sidan001的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="sidan001">
+    
+
+    
+    <meta name="description" content="jdb 是一个能够在命令行中交互式的调试 java 应用程序的工具
+语法1jdb &amp;lt;options&amp;gt; &amp;lt;class&amp;gt; &amp;lt;arguments&amp;gt;
+例子：
+1  jdb [options] main_class_name
+
+通过 jdb 启动一个java应用并在应用上开启一个 debug session
+
+2  jdb [options] -attach &amp;lt;ad">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java命令行调试">
+<meta property="og:url" content="https://github.com/sidan001/sidan001.github.io/blog/2016/03/08/java命令行调试/index.html">
+<meta property="og:site_name" content="sidan001的博客">
+<meta property="og:description" content="jdb 是一个能够在命令行中交互式的调试 java 应用程序的工具
+语法1jdb &amp;lt;options&amp;gt; &amp;lt;class&amp;gt; &amp;lt;arguments&amp;gt;
+例子：
+1  jdb [options] main_class_name
+
+通过 jdb 启动一个java应用并在应用上开启一个 debug session
+
+2  jdb [options] -attach &amp;lt;ad">
+<meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/blob/master/JAVA/jdwp_help.png">
+<meta property="og:updated_time" content="2016-03-10T05:30:01.888Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java命令行调试">
+<meta name="twitter:description" content="jdb 是一个能够在命令行中交互式的调试 java 应用程序的工具
+语法1jdb &amp;lt;options&amp;gt; &amp;lt;class&amp;gt; &amp;lt;arguments&amp;gt;
+例子：
+1  jdb [options] main_class_name
+
+通过 jdb 启动一个java应用并在应用上开启一个 debug session
+
+2  jdb [options] -attach &amp;lt;ad">
+<meta name="twitter:image" content="https://github.com/sidan001/sidan001.github.io/blob/master/JAVA/jdwp_help.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="sidan001的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/sidan001.github.io/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/sidan001.github.io/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/sidan001.github.io/blog/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/sidan001.github.io/blog/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/sidan001.github.io/blog/"><img src="/sidan001.github.io/blog/img/logo.png" alt="sidan001的博客" title="sidan001的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/sidan001.github.io/blog/" title="sidan001的博客">sidan001的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/sidan001.github.io/blog/">Home</a></li>
+					
+						<li><a href="/sidan001.github.io/blog/archives">Archives</a></li>
+					
+						<li><a href="/sidan001.github.io/blog/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:github.com/sidan001/sidan001.github.io/blog">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/sidan001.github.io/blog/2016/03/08/java命令行调试/" title="java命令行调试" itemprop="url">java命令行调试</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/sidan001.github.io/blog/about" title="sidan001" target="_blank" itemprop="author">sidan001</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-08T05:29:36.000Z" itemprop="datePublished"> 发表于 2016-03-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#语法"><span class="toc-number">1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-number">2.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动并调试-java-Application"><span class="toc-number">3.</span> <span class="toc-text">启动并调试 java Application</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调试-Running-Applications"><span class="toc-number">4.</span> <span class="toc-text">调试 Running Applications</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#补充常用词："><span class="toc-number">4.0.0.1.</span> <span class="toc-text">补充常用词：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#尝试Option-1"><span class="toc-number">4.1.</span> <span class="toc-text">尝试Option#1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#尝试Option-3"><span class="toc-number">4.2.</span> <span class="toc-text">尝试Option#3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用：-Herong-Yang’s-page"><span class="toc-number">5.</span> <span class="toc-text">引用： Herong Yang’s page</span></a></li></ol>
+		
+		</div>
+		
+		<p>jdb 是一个能够在命令行中交互式的调试 java 应用程序的工具</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdb &lt;options&gt; &lt;class&gt; &lt;arguments&gt;</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<p>1  <code>jdb [options] main_class_name</code></p>
+<blockquote>
+<p>通过 jdb 启动一个java应用并在应用上开启一个 debug session</p>
+</blockquote>
+<p>2  <code>jdb [options] -attach &lt;address&gt;</code></p>
+<blockquote>
+<p>运行 jdb 连接 一个独立运行的 java 应用并在应用上开启一个 debug session</p>
+</blockquote>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>为了在调试过程中所有的调试命令都能够使用，调试的目标应用必须通过  “-g” 选项编译将生成的调试信息写入到 class 文件中，例如<br>源文件内容、行号、变量信息等。</p>
+<h2 id="启动并调试-java-Application"><a href="#启动并调试-java-Application" class="headerlink" title="启动并调试 java Application"></a>启动并调试 java Application</h2><p>测试类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] a)</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"Hello world!"</span>); 	</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行 jdb 启动并调试Hello.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\sidan001&gt;javac Hello.java</span><br><span class="line">C:\Users\sidan001&gt;jdb Hello</span><br><span class="line">正在初始化jdb...</span><br><span class="line">&gt; stop in Hello.main</span><br><span class="line">正在延迟断点Hello.main。</span><br><span class="line">将在加载类后设置。</span><br><span class="line">&gt; run</span><br><span class="line">运行Hello</span><br><span class="line">设置未捕获的java.lang.Throwable</span><br><span class="line">设置延迟的未捕获的java.lang.Throwable</span><br><span class="line">&gt;</span><br><span class="line">VM 已启动: 设置延迟的断点Hello.main</span><br><span class="line"></span><br><span class="line">断点命中: &quot;线程=main&quot;, Hello.main(), 行=3 bci=0</span><br><span class="line">3          System.out.println(&quot;Hello world!&quot;);</span><br><span class="line"></span><br><span class="line">main[1] next</span><br><span class="line">Hello world!</span><br><span class="line"></span><br><span class="line">&gt; </span><br><span class="line">已完成的步骤: &quot;线程=main&quot;, Hello.main(), 行=4 bci=8</span><br><span class="line">4       &#125;</span><br><span class="line"></span><br><span class="line">main[1] cont</span><br><span class="line">&gt;</span><br><span class="line">应用程序已退出</span><br></pre></td></tr></table></figure></p>
+<p>如果想要立即运行目标应用，可使用 -launch 选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Liuchou&gt;jdb -launch Hello</span><br><span class="line">设置未捕获的java.lang.Throwable</span><br><span class="line">设置延迟的未捕获的java.lang.Throwable</span><br><span class="line">正在初始化jdb...</span><br><span class="line">&gt;</span><br><span class="line">VM 已启动: 当前调用堆栈上没有帧</span><br><span class="line"></span><br><span class="line">main[1] cont</span><br><span class="line">&gt; Hello world!</span><br><span class="line"></span><br><span class="line">应用程序已退出</span><br></pre></td></tr></table></figure></p>
+<h2 id="调试-Running-Applications"><a href="#调试-Running-Applications" class="headerlink" title="调试 Running Applications"></a>调试 Running Applications</h2><p>In JDK 1.5, both “jdb” and “java” have been enhanced to use JPDA (Java Platform Debugger Architecture) technology to give you the following options</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Debugger</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Option</td>
+<td>jdb</td>
+<td>java</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Shared memory client</td>
+<td>Shared memory server</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Shared memory server</td>
+<td>Shared memory client</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Socket client</td>
+<td>Socket server</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Socket server</td>
+<td>Socket client</td>
+</tr>
+</tbody>
+</table>
+<p>shared memory 选项要求debugger 和 target application 在一个机器上，socket 选项允许远程运行</p>
+<p>java -agentlib:jdwp的使用帮助：</p>
+<p><img src="https://github.com/sidan001/sidan001.github.io/blob/master/JAVA/jdwp_help.png"></p>
+<p>  suspend 如果为 y，目标 VM 将暂停，直到调试器应用程序进行连接。</p>
+<h5 id="补充常用词："><a href="#补充常用词：" class="headerlink" title="补充常用词："></a>补充常用词：</h5><ul>
+<li>JDI — Java 调试接口（Java Debug Interface）</li>
+<li>JDT — Java 开发工具（Java Development Tools）</li>
+<li>JDWP — Java 调试网络协议（Java Debug Wire Protocol）</li>
+<li>JPDA — Java 平台调试器架构（Java Platform Debugger Architecture）</li>
+<li>JVM — Java 虚拟机（Java Virtual Machine）</li>
+<li>JVMDI — JVM 调试接口（JVM Debug Interface）</li>
+<li>JVMTI — JVM 工具接口（JVM Tool Interface）</li>
+<li>VM — 虚拟机（Virtual Machine）</li>
+</ul>
+<h3 id="尝试Option-1"><a href="#尝试Option-1" class="headerlink" title="尝试Option#1"></a>尝试Option#1</h3><p>打开一个命令行窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\sidan001&gt;java -agentlib:jdwp=transport=dt_shmem,address=MyHello,server=y,suspend=y Hello</span><br><span class="line">Listening for transport dt_shmem at address: MyHello</span><br></pre></td></tr></table></figure>
+<p>目标程序以 “shared memory server” 模式启动，.打开一个新的命令行窗口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\sidan001&gt;jdb -attach MyHello</span><br><span class="line">设置未捕获的java.lang.Throwable</span><br><span class="line">设置延迟的未捕获的java.lang.Throwable</span><br><span class="line">正在初始化jdb...</span><br><span class="line">&gt;</span><br><span class="line">VM 已启动: 当前调用堆栈上没有帧</span><br><span class="line"></span><br><span class="line">main[1] stop in Hello.main</span><br><span class="line">正在延迟断点Hello.main。</span><br><span class="line">将在加载类后设置。</span><br><span class="line">main[1] cont</span><br><span class="line">&gt; 设置延迟的断点Hello.main</span><br><span class="line"></span><br><span class="line">断点命中: &quot;线程=main&quot;, Hello.main(), 行=3 bci=0</span><br><span class="line">3          System.out.println(&quot;Hello world!&quot;);</span><br><span class="line"></span><br><span class="line">main[1] list</span><br><span class="line">1    class Hello &#123;</span><br><span class="line">2       public static void main(String[] a) &#123;</span><br><span class="line">3 =&gt;       System.out.println(&quot;Hello world!&quot;);</span><br><span class="line">4       &#125;</span><br><span class="line">5    &#125;</span><br><span class="line">main[1] cont</span><br><span class="line">&gt;</span><br><span class="line">应用程序已退出</span><br></pre></td></tr></table></figure></p>
+<p>程序退出后，第一个窗口打印出 Hello world!<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\sidan001&gt;java -agentlib:jdwp=transport=dt_shmem,address=MyHello,server=y,suspend=y Hello</span><br><span class="line">Listening for transport dt_shmem at address: MyHello</span><br><span class="line">Hello world!</span><br></pre></td></tr></table></figure></p>
+<h3 id="尝试Option-3"><a href="#尝试Option-3" class="headerlink" title="尝试Option#3"></a>尝试Option#3</h3><p>打开一个命令行窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c:\Users\sidan001&gt;java -agentlib:jdwp=transport=dt_socket,address=localhost:8888,server=y,suspend=y Hello</span><br><span class="line">Listening for transport dt_socket at address: 8888</span><br></pre></td></tr></table></figure>
+<p>目标程序以 “socket server” 模式启动.打开一个新的命令行窗口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\sidan001&gt;jdb -connect com.sun.jdi.SocketAttach:hostname=localhost,port=8888</span><br><span class="line">设置未捕获的java.lang.Throwable</span><br><span class="line">设置延迟的未捕获的java.lang.Throwable</span><br><span class="line">正在初始化jdb...</span><br><span class="line">&gt;</span><br><span class="line">VM 已启动: 当前调用堆栈上没有帧</span><br><span class="line"></span><br><span class="line">main[1] stop in Hello.main</span><br><span class="line">正在延迟断点Hello.main。</span><br><span class="line">将在加载类后设置。</span><br><span class="line">main[1] cont</span><br><span class="line">&gt; 设置延迟的断点Hello.main</span><br><span class="line"></span><br><span class="line">断点命中: &quot;线程=main&quot;, Hello.main(), 行=3 bci=0</span><br><span class="line">3          System.out.println(&quot;Hello world!&quot;);</span><br><span class="line"></span><br><span class="line">main[1] cont</span><br><span class="line">&gt;</span><br><span class="line">应用程序已退出</span><br></pre></td></tr></table></figure></p>
+<h2 id="引用：-Herong-Yang’s-page"><a href="#引用：-Herong-Yang’s-page" class="headerlink" title="引用： Herong Yang’s page"></a>引用： <a href="http://herongyang.com/jtool/jdb_3.html" target="_blank" rel="external">Herong Yang’s page</a></h2>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/sidan001.github.io/blog/tags/java-jdb-j/">-java -jdb -j</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/sidan001/sidan001.github.io/blog/sidan001.github.io/blog/2016/03/08/java命令行调试/" data-title="java命令行调试 | sidan001的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#语法"><span class="toc-number">1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-number">2.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动并调试-java-Application"><span class="toc-number">3.</span> <span class="toc-text">启动并调试 java Application</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调试-Running-Applications"><span class="toc-number">4.</span> <span class="toc-text">调试 Running Applications</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#补充常用词："><span class="toc-number">4.0.0.1.</span> <span class="toc-text">补充常用词：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#尝试Option-1"><span class="toc-number">4.1.</span> <span class="toc-text">尝试Option#1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#尝试Option-3"><span class="toc-number">4.2.</span> <span class="toc-text">尝试Option#3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用：-Herong-Yang’s-page"><span class="toc-number">5.</span> <span class="toc-text">引用： Herong Yang’s page</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/sidan001.github.io/blog/tags/java-jdb-j/" title="-java -jdb -j">-java -jdb -j<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/sidan001.github.io/blog/about" target="_blank" title="sidan001">sidan001</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/sidan001.github.io/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/sidan001.github.io/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/sidan001.github.io/blog/js/gallery.js"></script>
+<script src="/sidan001.github.io/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sidan001.github.io/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/sidan001.github.io/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/sidan001.github.io/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/sidan001.github.io/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
