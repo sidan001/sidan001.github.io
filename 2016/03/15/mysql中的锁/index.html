@@ -4,97 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>浮点数类型 | sidan001的博客</title>
+    <title>MySQL select…for update的Row Lock与Table Lock | sidan001的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="sidan001">
     
 
     
-    <meta name="description" content="在 Java 语言中,浮点数有两种,分别为 float 和double。两者相关参数如下:
-
-
-
-类型名称
-所占空间
-表示范围
-
-
-
-
-float
-4 个字节
- ~ 
-
-
-double
-8 个字节
- ~ 
-
-
-
-由于计算机内部使用二进制表示小数,与我们通常的十进制表示法不同,因此小数在表示过程中有可能会有精度方面的损失。
-double 类型计算时会损失精度。float 测试了下没有损失精度，具体原">
+    <meta name="description" content="使用 select…for update会把数据给锁住，不过我们需要注意一些锁的级别，MySQL InnoDB默认Row-Level Lock，所以只有明确地指定主键，MySQL 才会执行Row lock (只锁住被选取的数据) ，否则MySQL 将会执行Table Lock (将整个数据表单给锁住)。
+除了主键外，使用索引也会影响数据库的锁定级别">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浮点数类型">
-<meta property="og:url" content="https://github.com/sidan001/sidan001.github.io/2016/03/08/浮点数类型/index.html">
+<meta property="og:title" content="MySQL select…for update的Row Lock与Table Lock">
+<meta property="og:url" content="https://github.com/sidan001/sidan001.github.io/2016/03/15/mysql中的锁/index.html">
 <meta property="og:site_name" content="sidan001的博客">
-<meta property="og:description" content="在 Java 语言中,浮点数有两种,分别为 float 和double。两者相关参数如下:
-
-
-
-类型名称
-所占空间
-表示范围
-
-
-
-
-float
-4 个字节
- ~ 
-
-
-double
-8 个字节
- ~ 
-
-
-
-由于计算机内部使用二进制表示小数,与我们通常的十进制表示法不同,因此小数在表示过程中有可能会有精度方面的损失。
-double 类型计算时会损失精度。float 测试了下没有损失精度，具体原">
-<meta property="og:image" content="http://latex.codecogs.com/png.latex?3.4028235&space;*&space;10^{38}">
-<meta property="og:image" content="http://latex.codecogs.com/png.latex?1.4*10^{-45}">
-<meta property="og:image" content="http://latex.codecogs.com/png.latex?1.7976931348623157&space;*&space;10^{308}">
-<meta property="og:image" content="http://latex.codecogs.com/png.latex?4.9*10^{-324}">
-<meta property="og:updated_time" content="2016-03-15T06:11:31.596Z">
+<meta property="og:description" content="使用 select…for update会把数据给锁住，不过我们需要注意一些锁的级别，MySQL InnoDB默认Row-Level Lock，所以只有明确地指定主键，MySQL 才会执行Row lock (只锁住被选取的数据) ，否则MySQL 将会执行Table Lock (将整个数据表单给锁住)。
+除了主键外，使用索引也会影响数据库的锁定级别">
+<meta property="og:updated_time" content="2016-03-15T08:13:24.989Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浮点数类型">
-<meta name="twitter:description" content="在 Java 语言中,浮点数有两种,分别为 float 和double。两者相关参数如下:
-
-
-
-类型名称
-所占空间
-表示范围
-
-
-
-
-float
-4 个字节
- ~ 
-
-
-double
-8 个字节
- ~ 
-
-
-
-由于计算机内部使用二进制表示小数,与我们通常的十进制表示法不同,因此小数在表示过程中有可能会有精度方面的损失。
-double 类型计算时会损失精度。float 测试了下没有损失精度，具体原">
-<meta name="twitter:image" content="http://latex.codecogs.com/png.latex?3.4028235&space;*&space;10^{38}">
+<meta name="twitter:title" content="MySQL select…for update的Row Lock与Table Lock">
+<meta name="twitter:description" content="使用 select…for update会把数据给锁住，不过我们需要注意一些锁的级别，MySQL InnoDB默认Row-Level Lock，所以只有明确地指定主键，MySQL 才会执行Row lock (只锁住被选取的数据) ，否则MySQL 将会执行Table Lock (将整个数据表单给锁住)。
+除了主键外，使用索引也会影响数据库的锁定级别">
 
     
     <link rel="alternative" href="/atom.xml" title="sidan001的博客" type="application/atom+xml">
@@ -154,14 +83,14 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/sidan001.github.io/2016/03/08/浮点数类型/" title="浮点数类型" itemprop="url">浮点数类型</a>
+      <a href="/sidan001.github.io/2016/03/15/mysql中的锁/" title="MySQL select…for update的Row Lock与Table Lock" itemprop="url">MySQL select…for update的Row Lock与Table Lock</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/sidan001.github.io/about" title="sidan001" target="_blank" itemprop="author">sidan001</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-08T05:29:36.000Z" itemprop="datePublished"> 发表于 2016-03-08</time>
+    <time datetime="2016-03-15T08:06:40.000Z" itemprop="datePublished"> 发表于 2016-03-15</time>
     
   </p>
 </header>
@@ -174,31 +103,8 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 		
 		</div>
 		
-		<p>在 Java 语言中,浮点数有两种,分别为 float 和double。两者相关参数如下:</p>
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th>所占空间</th>
-<th>表示范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>float</td>
-<td>4 个字节</td>
-<td><img src="http://latex.codecogs.com/png.latex?3.4028235&space;*&space;10^{38}"> ~ <img src="http://latex.codecogs.com/png.latex?1.4*10^{-45}"></td>
-</tr>
-<tr>
-<td>double</td>
-<td>8 个字节</td>
-<td><img src="http://latex.codecogs.com/png.latex?1.7976931348623157&space;*&space;10^{308}"> ~ <img src="http://latex.codecogs.com/png.latex?4.9*10^{-324}"></td>
-</tr>
-</tbody>
-</table>
-<p>由于计算机内部使用二进制表示小数,与我们通常的十进制表示法不同,因此小数在表示过程中有可能会有精度方面的损失。</p>
-<p><em>double 类型计算时会损失精度。float 测试了下没有损失精度，具体原理还不清楚</em>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFloat</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">double</span> a = <span class="number">2.0</span> - <span class="number">1.1</span>;</span><br><span class="line">		System.out.println(a);<span class="comment">//0.8999999999999999</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">float</span> b = <span class="number">2.0f</span> -<span class="number">1.1f</span>;</span><br><span class="line">		System.out.println(b);<span class="comment">//0.9</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+		<p>使用 <code>select…for update</code>会把数据给锁住，不过我们需要注意一些锁的级别，MySQL InnoDB默认Row-Level Lock，所以只有<strong>明确</strong>地指定主键，MySQL 才会执行Row lock (只锁住被选取的数据) ，否则MySQL 将会执行Table Lock (将整个数据表单给锁住)。</p>
+<p><span style="color: #ff0000;">除了主键外，使用索引也会影响数据库的锁定级别</span>    </p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -206,13 +112,13 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/sidan001.github.io/categories/Java/">Java</a>
+  <a class="article-category-link" href="/sidan001.github.io/categories/mysql中的锁级别/">mysql中的锁级别</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/sidan001.github.io/tags/java/">java</a>
+  <span></span> <a href="/sidan001.github.io/tags/mysql/">mysql</a>
   </div>
 
 </div>
@@ -221,7 +127,7 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/08/浮点数类型/" data-title="浮点数类型 | sidan001的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/15/mysql中的锁/" data-title="MySQL select…for update的Row Lock与Table Lock | sidan001的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -234,19 +140,11 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/sidan001.github.io/2016/03/15/mysql中的锁/" title="MySQL select…for update的Row Lock与Table Lock">
-  <strong>上一篇：</strong><br/>
-  <span>
-  MySQL select…for update的Row Lock与Table Lock</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/sidan001.github.io/2016/03/08/java命令行调试/"  title="java命令行调试">
+<a href="/sidan001.github.io/2016/03/08/浮点数类型/"  title="浮点数类型">
  <strong>下一篇：</strong><br/> 
- <span>java命令行调试
+ <span>浮点数类型
 </span>
 </a>
 </div>
@@ -255,7 +153,7 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/03/08/浮点数类型/" data-title="浮点数类型" data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/08/浮点数类型/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/15/mysql中的锁/" data-title="MySQL select…for update的Row Lock与Table Lock" data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/15/mysql中的锁/"></div>
 </section>
 
 

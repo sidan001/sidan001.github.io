@@ -78,20 +78,15 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/sidan001.github.io/2016/03/08/java命令行调试/" title="java命令行调试" itemprop="url">
+    <a href="/sidan001.github.io/2016/03/15/mysql中的锁/" title="MySQL select…for update的Row Lock与Table Lock" itemprop="url">
   
-    <h1 itemprop="name">java命令行调试</h1>
+    <h1 itemprop="name">MySQL select…for update的Row Lock与Table Lock</h1>
     
      
-           <p itemprop="description" >jdb 是一个能够在命令行中交互式的调试 java 应用程序的工具
-语法1jdb &amp;lt;options&amp;gt; &amp;lt;class&amp;gt; &amp;lt;arguments&amp;gt;
-例子：
-1  jdb [options] main_class_name
-
-通过 jdb 启动一个ja</p>
+           <p itemprop="description" >使用 select…for update会把数据给锁住，不过我们需要注意一些锁的级别，MySQL InnoDB默认Row-Level Lock，所以只有明确地指定主键，MySQL 才会执行Row lock (只锁住被选取的数据) ，否则MySQL 将会执行Table Lock (</p>
         
     
-    <time datetime="2016-03-08T05:29:36.000Z" itemprop="datePublished">2016-03-08</time>
+    <time datetime="2016-03-15T08:06:40.000Z" itemprop="datePublished">2016-03-15</time>
   </a>
 </section>
 
@@ -131,6 +126,31 @@ double
 
 
 由于计算机内部使用二进制表示小数,与我们通常的十进制表示法不同,因此</p>
+        
+    
+    <time datetime="2016-03-08T05:29:36.000Z" itemprop="datePublished">2016-03-08</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/sidan001.github.io/2016/03/08/java命令行调试/" title="java命令行调试" itemprop="url">
+  
+    <h1 itemprop="name">java命令行调试</h1>
+    
+     
+           <p itemprop="description" >jdb 是一个能够在命令行中交互式的调试 java 应用程序的工具
+语法1jdb &amp;lt;options&amp;gt; &amp;lt;class&amp;gt; &amp;lt;arguments&amp;gt;
+例子：
+1  jdb [options] main_class_name
+
+通过 jdb 启动一个ja</p>
         
     
     <time datetime="2016-03-08T05:29:36.000Z" itemprop="datePublished">2016-03-08</time>
@@ -212,6 +232,10 @@ char 类型存放的就是字符的编码。
 			<li><a href="/sidan001.github.io/categories/JavaCommandLineDebug/" title="JavaCommandLineDebug">JavaCommandLineDebug<sup>1</sup></a></li>
 		  
 		
+		  
+			<li><a href="/sidan001.github.io/categories/mysql中的锁级别/" title="mysql中的锁级别">mysql中的锁级别<sup>1</sup></a></li>
+		  
+		
 		</ul>
 </div>
 
@@ -223,6 +247,10 @@ char 类型存放的就是字符的编码。
 		
 			
 				<li><a href="/sidan001.github.io/tags/java/" title="java">java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/sidan001.github.io/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
 			
 		
 			
