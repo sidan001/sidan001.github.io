@@ -32,7 +32,8 @@
 
 2  jdb [options] -attach &amp;lt;ad">
 <meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/blob/master/JAVA/jdwp_help.png">
-<meta property="og:updated_time" content="2016-03-10T05:30:01.888Z">
+<meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/./jdwp_help.png">
+<meta property="og:updated_time" content="2016-03-15T04:33:48.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java命令行调试">
 <meta name="twitter:description" content="jdb 是一个能够在命令行中交互式的调试 java 应用程序的工具
@@ -69,7 +70,7 @@
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/sidan001.github.io/" title="sidan001的博客">sidan001的博客</a></h1>
-				<h2 class="blog-motto"></h2>
+				<h2 class="blog-motto">子标题</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
@@ -77,11 +78,11 @@
 				<ul>
 					<ul>
 					 
-						<li><a href="/sidan001.github.io/">Home</a></li>
+						<li><a href="/sidan001.github.io/">主页</a></li>
 					
-						<li><a href="/sidan001.github.io/archives">Archives</a></li>
+						<li><a href="/sidan001.github.io/archives">归档</a></li>
 					
-						<li><a href="/sidan001.github.io/about">About</a></li>
+						<li><a href="/sidan001.github.io/about">关于</a></li>
 					
 					<li>
  					
@@ -137,7 +138,7 @@
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>为了在调试过程中所有的调试命令都能够使用，调试的目标应用必须通过  “-g” 选项编译将生成的调试信息写入到 class 文件中，例如<br>源文件内容、行号、变量信息等。</p>
 <h2 id="启动并调试-java-Application"><a href="#启动并调试-java-Application" class="headerlink" title="启动并调试 java Application"></a>启动并调试 java Application</h2><p>测试类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] a)</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"Hello world!"</span>); 	</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>运行 jdb 启动并调试Hello.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\sidan001&gt;javac Hello.java</span><br><span class="line">C:\Users\sidan001&gt;jdb Hello</span><br><span class="line">正在初始化jdb...</span><br><span class="line">&gt; stop in Hello.main</span><br><span class="line">正在延迟断点Hello.main。</span><br><span class="line">将在加载类后设置。</span><br><span class="line">&gt; run</span><br><span class="line">运行Hello</span><br><span class="line">设置未捕获的java.lang.Throwable</span><br><span class="line">设置延迟的未捕获的java.lang.Throwable</span><br><span class="line">&gt;</span><br><span class="line">VM 已启动: 设置延迟的断点Hello.main</span><br><span class="line"></span><br><span class="line">断点命中: &quot;线程=main&quot;, Hello.main(), 行=3 bci=0</span><br><span class="line">3          System.out.println(&quot;Hello world!&quot;);</span><br><span class="line"></span><br><span class="line">main[1] next</span><br><span class="line">Hello world!</span><br><span class="line"></span><br><span class="line">&gt; </span><br><span class="line">已完成的步骤: &quot;线程=main&quot;, Hello.main(), 行=4 bci=8</span><br><span class="line">4       &#125;</span><br><span class="line"></span><br><span class="line">main[1] cont</span><br><span class="line">&gt;</span><br><span class="line">应用程序已退出</span><br></pre></td></tr></table></figure></p>
-<p>如果想要立即运行目标应用，可使用 -launch 选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Liuchou&gt;jdb -launch Hello</span><br><span class="line">设置未捕获的java.lang.Throwable</span><br><span class="line">设置延迟的未捕获的java.lang.Throwable</span><br><span class="line">正在初始化jdb...</span><br><span class="line">&gt;</span><br><span class="line">VM 已启动: 当前调用堆栈上没有帧</span><br><span class="line"></span><br><span class="line">main[1] cont</span><br><span class="line">&gt; Hello world!</span><br><span class="line"></span><br><span class="line">应用程序已退出</span><br></pre></td></tr></table></figure></p>
+<p>如果想要立即运行目标应用，可使用 -launch 选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\sidan001&gt;jdb -launch Hello</span><br><span class="line">设置未捕获的java.lang.Throwable</span><br><span class="line">设置延迟的未捕获的java.lang.Throwable</span><br><span class="line">正在初始化jdb...</span><br><span class="line">&gt;</span><br><span class="line">VM 已启动: 当前调用堆栈上没有帧</span><br><span class="line"></span><br><span class="line">main[1] cont</span><br><span class="line">&gt; Hello world!</span><br><span class="line"></span><br><span class="line">应用程序已退出</span><br></pre></td></tr></table></figure></p>
 <h2 id="调试-Running-Applications"><a href="#调试-Running-Applications" class="headerlink" title="调试 Running Applications"></a>调试 Running Applications</h2><p>In JDK 1.5, both “jdb” and “java” have been enhanced to use JPDA (Java Platform Debugger Architecture) technology to give you the following options</p>
 <table>
 <thead>
@@ -178,6 +179,7 @@
 <p>shared memory 选项要求debugger 和 target application 在一个机器上，socket 选项允许远程运行</p>
 <p>java -agentlib:jdwp的使用帮助：</p>
 <p><img src="https://github.com/sidan001/sidan001.github.io/blob/master/JAVA/jdwp_help.png"></p>
+<p><img src="./jdwp_help.png" alt="jdwp_help"></p>
 <p>  suspend 如果为 y，目标 VM 将暂停，直到调试器应用程序进行连接。</p>
 <h5 id="补充常用词："><a href="#补充常用词：" class="headerlink" title="补充常用词："></a>补充常用词：</h5><ul>
 <li>JDI — Java 调试接口（Java Debug Interface）</li>
@@ -201,10 +203,15 @@
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/sidan001.github.io/categories/JavaCommandLineDebug/">JavaCommandLineDebug</a>
+</div>
+
 
   <div class="article-tags">
   
-  <span></span> <a href="/sidan001.github.io/tags/java-jdb-j/">-java -jdb -j</a>
+  <span></span> <a href="/sidan001.github.io/tags/java/">java</a><a href="/sidan001.github.io/tags/debug/">debug</a>
   </div>
 
 </div>
@@ -224,7 +231,24 @@
    	       
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/sidan001.github.io/2016/03/08/浮点数类型/"  title="浮点数类型">
+ <strong>下一篇：</strong><br/> 
+ <span>浮点数类型
+</span>
+</a>
+</div>
+
+</nav>
+
 	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/03/08/java命令行调试/" data-title="java命令行调试" data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/08/java命令行调试/"></div>
+</section>
+
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
@@ -241,9 +265,31 @@
 <aside class="clearfix">
 
   
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="https://github.com/sidan001" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
 
 
   
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/sidan001.github.io/categories/Java/" title="Java">Java<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/sidan001.github.io/categories/JavaCommandLineDebug/" title="JavaCommandLineDebug">JavaCommandLineDebug<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
 
   
 <div class="tagslist">
@@ -251,7 +297,11 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/sidan001.github.io/tags/java-jdb-j/" title="-java -jdb -j">-java -jdb -j<sup>1</sup></a></li>
+				<li><a href="/sidan001.github.io/tags/java/" title="java">java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/sidan001.github.io/tags/debug/" title="debug">debug<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -268,12 +318,6 @@
             
           </li>
         
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
     </ul>
 </div>
 
@@ -286,7 +330,7 @@
 
   <div class="weiboshow">
   <p class="asidetitle">新浪微博</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=2a5b1a59&dpc=1"></iframe>
 </div>
 
 
@@ -302,14 +346,16 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+		<p> Hello ,I&#39;m Sidan001 in Google. <br/>
 			This is my blog,believe it or not.</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
 		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		<a href="http://weibo.com/1690162052" target="_blank" class="icon-weibo" title="微博"></a>
 		
+		
+		<a href="https://github.com/https://github.com/sidan001" target="_blank" class="icon-github" title="github"></a>
 		
 		
 		
@@ -322,6 +368,12 @@
 	</div>
 			
 		
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/by/4.0" class="cc-opacity" target="_blank">
+            <img src="/sidan001.github.io/img/cc-by.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    
 
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
@@ -461,6 +513,18 @@ $(document).ready(function(){
 </script>
 
 
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"sidan001"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
