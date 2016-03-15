@@ -4,83 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>字符类型 | sidan001的博客</title>
+    <title>sidan001的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="sidan001">
     
 
     
-    <meta name="description" content="java 中的字符类型为 char 类型,其本质为一个无符号整数
-
-
-
-类型名称
-所占空间
-表示范围
-
-
-
-
-char
-2 个字节
-0 ~ 65536
-
-
-
-在计算机中,一个字符是由一个正整数表示,这个整数被称为字符的编码。
-char 类型存放的就是字符的编码。
-给一个字符变量赋值总共有三种方式:字面值赋值,编码赋值,unicode赋值。
-123char ch1 = &apos;A&apos;; //字面值赋值cha">
+    <meta name="description" content="网站描述">
 <meta property="og:type" content="article">
-<meta property="og:title" content="字符类型">
-<meta property="og:url" content="https://github.com/sidan001/sidan001.github.io/2016/03/08/字符类型char/index.html">
+<meta property="og:title" content="sidan001的博客">
+<meta property="og:url" content="https://github.com/sidan001/sidan001.github.io/2016/03/15/mysql中锁/index.html">
 <meta property="og:site_name" content="sidan001的博客">
-<meta property="og:description" content="java 中的字符类型为 char 类型,其本质为一个无符号整数
-
-
-
-类型名称
-所占空间
-表示范围
-
-
-
-
-char
-2 个字节
-0 ~ 65536
-
-
-
-在计算机中,一个字符是由一个正整数表示,这个整数被称为字符的编码。
-char 类型存放的就是字符的编码。
-给一个字符变量赋值总共有三种方式:字面值赋值,编码赋值,unicode赋值。
-123char ch1 = &apos;A&apos;; //字面值赋值cha">
-<meta property="og:updated_time" content="2016-03-15T06:11:46.307Z">
+<meta property="og:description" content="网站描述">
+<meta property="og:updated_time" content="2016-03-15T08:04:54.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="字符类型">
-<meta name="twitter:description" content="java 中的字符类型为 char 类型,其本质为一个无符号整数
-
-
-
-类型名称
-所占空间
-表示范围
-
-
-
-
-char
-2 个字节
-0 ~ 65536
-
-
-
-在计算机中,一个字符是由一个正整数表示,这个整数被称为字符的编码。
-char 类型存放的就是字符的编码。
-给一个字符变量赋值总共有三种方式:字面值赋值,编码赋值,unicode赋值。
-123char ch1 = &apos;A&apos;; //字面值赋值cha">
+<meta name="twitter:title" content="sidan001的博客">
+<meta name="twitter:description" content="网站描述">
 
     
     <link rel="alternative" href="/atom.xml" title="sidan001的博客" type="application/atom+xml">
@@ -140,14 +80,14 @@ char 类型存放的就是字符的编码。
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/sidan001.github.io/2016/03/08/字符类型char/" title="字符类型" itemprop="url">字符类型</a>
+      <a href="/sidan001.github.io/2016/03/15/mysql中锁/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
        
 		<a href="/sidan001.github.io/about" title="sidan001" target="_blank" itemprop="author">sidan001</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-08T05:29:36.000Z" itemprop="datePublished"> 发表于 2016-03-08</time>
+    <time datetime="2016-03-15T08:04:54.004Z" itemprop="datePublished"> 发表于 2016-03-15</time>
     
   </p>
 </header>
@@ -160,43 +100,11 @@ char 类型存放的就是字符的编码。
 		
 		</div>
 		
-		<p>java 中的字符类型为 char 类型,其本质为一个<strong>无符号整数</strong></p>
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th>所占空间</th>
-<th>表示范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>char</td>
-<td>2 个字节</td>
-<td>0 ~ 65536</td>
-</tr>
-</tbody>
-</table>
-<p>在计算机中,一个字符是由一个正整数表示,这个整数被称为字符的编码。</p>
-<p>char 类型存放的就是字符的编码。</p>
-<p>给一个字符变量赋值总共有三种方式:<code>字面值赋值</code>,<code>编码赋值</code>,<code>unicode赋值</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> ch1 = <span class="string">'A'</span>; <span class="comment">//字面值赋值</span></span><br><span class="line"><span class="keyword">char</span> ch2 = <span class="number">65</span>; <span class="comment">//编码赋值</span></span><br><span class="line"><span class="keyword">char</span> ch3 = <span class="string">'\u0041'</span>; <span class="comment">//unicode 赋值</span></span><br></pre></td></tr></table></figure>
-<p>由于 Java 中的 char 类型采用 Unicode 编码方式,char 类型可以用来处理中文。例如:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> ch1 = <span class="string">'中'</span>;</span><br></pre></td></tr></table></figure></p>
-  
+		  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/sidan001.github.io/categories/Java/">Java</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/sidan001.github.io/tags/java/">java</a>
-  </div>
 
 </div>
 
@@ -204,7 +112,7 @@ char 类型存放的就是字符的编码。
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/08/字符类型char/" data-title="字符类型 | sidan001的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/15/mysql中锁/" data-title="sidan001的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -218,18 +126,18 @@ char 类型存放的就是字符的编码。
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/sidan001.github.io/2016/03/15/mysql中锁/" title="">
+ <a href="/sidan001.github.io/2016/03/15/mysql中的锁/" title="MySQL select…for update的Row Lock与Table Lock">
   <strong>上一篇：</strong><br/>
   <span>
-  (no title)</span>
+  MySQL select…for update的Row Lock与Table Lock</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/sidan001.github.io/2016/03/08/浮点数类型/"  title="浮点数类型">
+<a href="/sidan001.github.io/2016/03/08/字符类型char/"  title="字符类型">
  <strong>下一篇：</strong><br/> 
- <span>浮点数类型
+ <span>字符类型
 </span>
 </a>
 </div>
@@ -238,7 +146,7 @@ char 类型存放的就是字符的编码。
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/03/08/字符类型char/" data-title="字符类型" data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/08/字符类型char/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/15/mysql中锁/" data-title="" data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/15/mysql中锁/"></div>
 </section>
 
 
