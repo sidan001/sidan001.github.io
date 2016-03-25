@@ -23,13 +23,16 @@
 123A = 0011 1100A &amp;lt;&amp;lt; 2     得到 1111 0000即240
 向左移n位相当于是乘以2n次方123int  a =1; a &amp;lt;&amp;lt;= 3;System.out.println(a);//结果为8
 按位右移运算 &amp;gt;&amp;gt;公式 x &amp;gt;&amp;gt; n ：x按位左">
-<meta property="og:updated_time" content="2016-03-25T05:15:17.380Z">
+<meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/logicalBitwiseOperations.png">
+<meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/TypicalBitMaskOperations.png">
+<meta property="og:updated_time" content="2016-03-25T08:09:38.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BitComput">
 <meta name="twitter:description" content="按位左移运算 &amp;lt;&amp;lt;公式 x &amp;lt;&amp;lt; n ：x按位右移n位数。
 123A = 0011 1100A &amp;lt;&amp;lt; 2     得到 1111 0000即240
 向左移n位相当于是乘以2n次方123int  a =1; a &amp;lt;&amp;lt;= 3;System.out.println(a);//结果为8
 按位右移运算 &amp;gt;&amp;gt;公式 x &amp;gt;&amp;gt; n ：x按位左">
+<meta name="twitter:image" content="https://github.com/sidan001/sidan001.github.io/logicalBitwiseOperations.png">
 
     
     <link rel="alternative" href="/atom.xml" title="sidan001的博客" type="application/atom+xml">
@@ -105,7 +108,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#按位左移运算-lt-lt"><span class="toc-number">1.</span> <span class="toc-text">按位左移运算 <<</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位右移运算-gt-gt"><span class="toc-number">2.</span> <span class="toc-text">按位右移运算 >></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位与操作-amp"><span class="toc-number">3.</span> <span class="toc-text">按位与操作 &</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">3.1.</span> <span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位或操作"><span class="toc-number">4.</span> <span class="toc-text">按位或操作 |</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位异或操作"><span class="toc-number">5.</span> <span class="toc-text">按位异或操作 ^</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位补运算"><span class="toc-number">6.</span> <span class="toc-text">按位补运算 ~</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位右移补零操作-gt-gt-gt"><span class="toc-number">7.</span> <span class="toc-text">按位右移补零操作 >>></span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#按位左移运算-lt-lt"><span class="toc-number">1.</span> <span class="toc-text">按位左移运算 <<</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位右移运算-gt-gt"><span class="toc-number">2.</span> <span class="toc-text">按位右移运算 >></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位与操作-amp"><span class="toc-number">3.</span> <span class="toc-text">按位与操作 &</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">3.1.</span> <span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位或操作"><span class="toc-number">4.</span> <span class="toc-text">按位或操作 |</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位异或操作"><span class="toc-number">5.</span> <span class="toc-text">按位异或操作 ^</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位补运算"><span class="toc-number">6.</span> <span class="toc-text">按位补运算 ~</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位右移补零操作-gt-gt-gt"><span class="toc-number">7.</span> <span class="toc-text">按位右移补零操作 >>></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用-Bitwise-Operators-and-Bit-Masks"><span class="toc-number">8.</span> <span class="toc-text">引用 Bitwise Operators and Bit Masks</span></a></li></ol>
 		
 		</div>
 		
@@ -128,7 +131,16 @@
 <p>两个int类型变量x、y,要求两者数字交换，位运算的实现方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x ^= y; </span><br><span class="line">y ^= x; </span><br><span class="line">x ^= y;</span><br></pre></td></tr></table></figure></p>
 <h2 id="按位补运算"><a href="#按位补运算" class="headerlink" title="按位补运算 ~"></a>按位补运算 <code>~</code></h2><p>按位补运算符翻转操作数的每一位。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">60</span>; <span class="comment">/* 60 = 0011 1100 */</span> </span><br><span class="line"><span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line">c = ~a;          <span class="comment">/*-61 = 1100 0011 */</span></span><br></pre></td></tr></table></figure></p>
 <p>公式 :<code>~x</code>相当于 x为正数：<code>-(x + 1)</code> </p>
-<h2 id="按位右移补零操作-gt-gt-gt"><a href="#按位右移补零操作-gt-gt-gt" class="headerlink" title="按位右移补零操作 &gt;&gt;&gt;"></a>按位右移补零操作 <code>&gt;&gt;&gt;</code></h2>  
+<h2 id="按位右移补零操作-gt-gt-gt"><a href="#按位右移补零操作-gt-gt-gt" class="headerlink" title="按位右移补零操作 &gt;&gt;&gt;"></a>按位右移补零操作 <code>&gt;&gt;&gt;</code></h2><h2 id="引用-Bitwise-Operators-and-Bit-Masks"><a href="#引用-Bitwise-Operators-and-Bit-Masks" class="headerlink" title="引用 Bitwise Operators and Bit Masks"></a>引用 <a href="http://www.vipan.com/htdocs/bitwisehelp.html" target="_blank" rel="external">Bitwise Operators and Bit Masks</a></h2><p><img src="logicalBitwiseOperations.png" alt="logicalBitwiseOperations"></p>
+<ul>
+<li><code>|</code> (Bitwise OR)<br>  This property is used to “set” or “turn on” a “flag” (bit set to one) in your flags or options variable regardless of whether that flag was set previously or not.</li>
+<li><code>&amp;</code> (Bitwise AND)<br>  This operator is used to check the state of a flag in your flags variable.</li>
+<li><code>^</code> (Bitwise XOR or exclusive OR)<br>  The Bitwise XOR is used to toggle the flag bits of a MASK in your flags variable.</li>
+<li><code>~</code> (Bitwise NOT)<br>  This is useful when “unsetting” or “turning off” a flag.</li>
+</ul>
+<p><img src="TypicalBitMaskOperations.png" alt="TypicalBitMaskOperations"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> flags = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> flagbitN = <span class="number">1</span>;</span><br><span class="line"><span class="comment">//Set a flag or overlay multiple values</span></span><br><span class="line">flags = flags | flagbitN;</span><br><span class="line">System.out.println(flags); <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Check if a bit is set</span></span><br><span class="line">System.out.println((flags &amp; flagbitN) == flagbitN);<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Unset a flag (zero-out a bit or set a bit to zero)</span></span><br><span class="line">flags = flags &amp; ~flagbitN;</span><br><span class="line">System.out.println(flags);<span class="comment">//2</span></span><br><span class="line"></span><br><span class="line">System.out.println((flags &amp; flagbitN) == flagbitN);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -136,7 +148,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/sidan001.github.io/tags/BitComput/">BitComput</a>
+  <span></span> <a href="/sidan001.github.io/tags/bitwise-operators/">bitwise operators</a>
   </div>
 
 </div>
@@ -181,7 +193,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#按位左移运算-lt-lt"><span class="toc-number">1.</span> <span class="toc-text">按位左移运算 <<</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位右移运算-gt-gt"><span class="toc-number">2.</span> <span class="toc-text">按位右移运算 >></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位与操作-amp"><span class="toc-number">3.</span> <span class="toc-text">按位与操作 &</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">3.1.</span> <span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位或操作"><span class="toc-number">4.</span> <span class="toc-text">按位或操作 |</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位异或操作"><span class="toc-number">5.</span> <span class="toc-text">按位异或操作 ^</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位补运算"><span class="toc-number">6.</span> <span class="toc-text">按位补运算 ~</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位右移补零操作-gt-gt-gt"><span class="toc-number">7.</span> <span class="toc-text">按位右移补零操作 >>></span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#按位左移运算-lt-lt"><span class="toc-number">1.</span> <span class="toc-text">按位左移运算 <<</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位右移运算-gt-gt"><span class="toc-number">2.</span> <span class="toc-text">按位右移运算 >></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位与操作-amp"><span class="toc-number">3.</span> <span class="toc-text">按位与操作 &</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">3.1.</span> <span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位或操作"><span class="toc-number">4.</span> <span class="toc-text">按位或操作 |</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位异或操作"><span class="toc-number">5.</span> <span class="toc-text">按位异或操作 ^</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位补运算"><span class="toc-number">6.</span> <span class="toc-text">按位补运算 ~</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#按位右移补零操作-gt-gt-gt"><span class="toc-number">7.</span> <span class="toc-text">按位右移补零操作 >>></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用-Bitwise-Operators-and-Bit-Masks"><span class="toc-number">8.</span> <span class="toc-text">引用 Bitwise Operators and Bit Masks</span></a></li></ol>
  
   </div>
 
@@ -230,19 +242,19 @@
 			
 		
 			
+				<li><a href="/sidan001.github.io/tags/debug/" title="debug">debug<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/sidan001.github.io/tags/Binary-numbers-Converter/" title="Binary numbers Converter">Binary numbers Converter<sup>1</sup></a></li>
 			
 		
 			
+				<li><a href="/sidan001.github.io/tags/bitwise-operators/" title="bitwise operators">bitwise operators<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/sidan001.github.io/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/sidan001.github.io/tags/BitComput/" title="BitComput">BitComput<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/sidan001.github.io/tags/debug/" title="debug">debug<sup>1</sup></a></li>
 			
 		
 		</ul>
