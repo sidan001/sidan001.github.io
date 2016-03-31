@@ -4,97 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>浮点数类型 | sidan001的博客</title>
+    <title>JMS2.0 | sidan001的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="sidan001">
     
 
     
-    <meta name="description" content="在 Java 语言中,浮点数有两种,分别为 float 和double。两者相关参数如下:
+    <meta name="description" content="JMS DomainsJMS supports the two major styles of messaging provided by enterprise messaging products:
 
-
-
-类型名称
-所占空间
-表示范围
-
-
-
-
-float
-4 个字节
- ~ 
-
-
-double
-8 个字节
- ~ 
-
-
-
-由于计算机内部使用二进制表示小数,与我们通常的十进制表示法不同,因此小数在表示过程中有可能会有精度方面的损失。
-double 类型计算时会损失精度。float 测试了下没有损失精度，具体原">
+Point-to-point (PTP) messaging allows a client to send a message to another client via an intermed">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浮点数类型">
-<meta property="og:url" content="https://github.com/sidan001/sidan001.github.io/2016/03/08/浮点数类型/index.html">
+<meta property="og:title" content="JMS2.0">
+<meta property="og:url" content="https://github.com/sidan001/sidan001.github.io/2016/03/31/JMS2-0/index.html">
 <meta property="og:site_name" content="sidan001的博客">
-<meta property="og:description" content="在 Java 语言中,浮点数有两种,分别为 float 和double。两者相关参数如下:
+<meta property="og:description" content="JMS DomainsJMS supports the two major styles of messaging provided by enterprise messaging products:
 
-
-
-类型名称
-所占空间
-表示范围
-
-
-
-
-float
-4 个字节
- ~ 
-
-
-double
-8 个字节
- ~ 
-
-
-
-由于计算机内部使用二进制表示小数,与我们通常的十进制表示法不同,因此小数在表示过程中有可能会有精度方面的损失。
-double 类型计算时会损失精度。float 测试了下没有损失精度，具体原">
-<meta property="og:image" content="http://latex.codecogs.com/png.latex?3.4028235&space;*&space;10^{38}">
-<meta property="og:image" content="http://latex.codecogs.com/png.latex?1.4*10^{-45}">
-<meta property="og:image" content="http://latex.codecogs.com/png.latex?1.7976931348623157&space;*&space;10^{308}">
-<meta property="og:image" content="http://latex.codecogs.com/png.latex?4.9*10^{-324}">
-<meta property="og:updated_time" content="2016-03-15T06:11:31.596Z">
+Point-to-point (PTP) messaging allows a client to send a message to another client via an intermed">
+<meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/JMSDomains.png">
+<meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/JMS_Administration.png">
+<meta property="og:updated_time" content="2016-03-31T07:19:57.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浮点数类型">
-<meta name="twitter:description" content="在 Java 语言中,浮点数有两种,分别为 float 和double。两者相关参数如下:
+<meta name="twitter:title" content="JMS2.0">
+<meta name="twitter:description" content="JMS DomainsJMS supports the two major styles of messaging provided by enterprise messaging products:
 
-
-
-类型名称
-所占空间
-表示范围
-
-
-
-
-float
-4 个字节
- ~ 
-
-
-double
-8 个字节
- ~ 
-
-
-
-由于计算机内部使用二进制表示小数,与我们通常的十进制表示法不同,因此小数在表示过程中有可能会有精度方面的损失。
-double 类型计算时会损失精度。float 测试了下没有损失精度，具体原">
-<meta name="twitter:image" content="http://latex.codecogs.com/png.latex?3.4028235&space;*&space;10^{38}">
+Point-to-point (PTP) messaging allows a client to send a message to another client via an intermed">
+<meta name="twitter:image" content="https://github.com/sidan001/sidan001.github.io/JMSDomains.png">
 
     
     <link rel="alternative" href="/atom.xml" title="sidan001的博客" type="application/atom+xml">
@@ -154,14 +89,14 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/sidan001.github.io/2016/03/08/浮点数类型/" title="浮点数类型" itemprop="url">浮点数类型</a>
+      <a href="/sidan001.github.io/2016/03/31/JMS2-0/" title="JMS2.0" itemprop="url">JMS2.0</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/sidan001.github.io/about" title="sidan001" target="_blank" itemprop="author">sidan001</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-08T05:29:36.000Z" itemprop="datePublished"> 发表于 2016-03-08</time>
+    <time datetime="2016-03-31T06:32:16.000Z" itemprop="datePublished"> 发表于 2016-03-31</time>
     
   </p>
 </header>
@@ -170,35 +105,35 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JMS-Domains"><span class="toc-number">1.</span> <span class="toc-text">JMS Domains</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-a-JMS-application"><span class="toc-number">2.</span> <span class="toc-text">What is a JMS application?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的Api的接口"><span class="toc-number">3.</span> <span class="toc-text">常见的Api的接口</span></a></li></ol>
 		
 		</div>
 		
-		<p>在 Java 语言中,浮点数有两种,分别为 float 和double。两者相关参数如下:</p>
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th>所占空间</th>
-<th>表示范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>float</td>
-<td>4 个字节</td>
-<td><img src="http://latex.codecogs.com/png.latex?3.4028235&space;*&space;10^{38}"> ~ <img src="http://latex.codecogs.com/png.latex?1.4*10^{-45}"></td>
-</tr>
-<tr>
-<td>double</td>
-<td>8 个字节</td>
-<td><img src="http://latex.codecogs.com/png.latex?1.7976931348623157&space;*&space;10^{308}"> ~ <img src="http://latex.codecogs.com/png.latex?4.9*10^{-324}"></td>
-</tr>
-</tbody>
-</table>
-<p>由于计算机内部使用二进制表示小数,与我们通常的十进制表示法不同,因此小数在表示过程中有可能会有精度方面的损失。</p>
-<p><em>double 类型计算时会损失精度。float 测试了下没有损失精度，具体原理还不清楚</em>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFloat</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">double</span> a = <span class="number">2.0</span> - <span class="number">1.1</span>;</span><br><span class="line">		System.out.println(a);<span class="comment">//0.8999999999999999</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">float</span> b = <span class="number">2.0f</span> -<span class="number">1.1f</span>;</span><br><span class="line">		System.out.println(b);<span class="comment">//0.9</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+		<h2 id="JMS-Domains"><a href="#JMS-Domains" class="headerlink" title="JMS Domains"></a>JMS Domains</h2><p>JMS supports the two major styles of messaging provided by enterprise messaging products:</p>
+<ul>
+<li><strong>Point-to-point (PTP)</strong> messaging allows a client to send a message to another client via an intermediate abstraction called a queue.<br>The client that sends the message sends it to a specific queue. The client  that receives the message extracts it from that queue.</li>
+<li><strong>Publish and subscribe (pub/sub)</strong> messaging allows a client to send a message to multiple clients via an intermediate abstraction called a topic.<br>The client that sends the message publishes it to a specific topic. The message is then delivered to all the clients that are subscribed to that topic.</li>
+</ul>
+<p><img src="JMSDomains.png" alt="JMSDomains"></p>
+<h2 id="What-is-a-JMS-application"><a href="#What-is-a-JMS-application" class="headerlink" title="What is a JMS application?"></a>What is a JMS application?</h2><p>A JMS application is composed of the following parts:</p>
+<ul>
+<li><strong>JMS Clients</strong> - These are the Java language programs that send and receive messages.</li>
+<li><strong>Non-JMS Clients</strong> - These are clients that use a message system’s native client API<br>instead of JMS.If the application predated the availability of JMS it is likely that it will include both JMS  and non   -JMS clients.</li>
+<li><strong>Messages</strong> - Each application defines a set of messages that are used to communicate information between its clients.</li>
+<li><strong>JMS Provider</strong> - This is a messaging system that implements JMS in addition to the other administrative and control functionality required of a full featured messaging product.</li>
+<li><strong>Administered Objects</strong> - Administered objects are preconfigured JMS objects created by an administrator for the use of clients.<ul>
+<li><code>ConnectionFactory</code> - This is the object a client uses to create a connection with a provider.</li>
+<li><code>Destination</code> - This is the object a client uses to specify the destination of messages it is sending and the source of messages it receives.<br>Architecture(体系架构)<br><img src="JMS_Administration.png" alt="JMS_Administration_Architecture"></li>
+</ul>
+</li>
+</ul>
+<h2 id="常见的Api的接口"><a href="#常见的Api的接口" class="headerlink" title="常见的Api的接口"></a>常见的Api的接口</h2><p>The main interfaces common to multiple APIs are as follows:</p>
+<ul>
+<li><code>Message</code>, <code>BytesMessage</code>, <code>MapMessage</code>, <code>ObjectMessage</code>, <code>StreamMessage</code> and <code>TextMessage</code> – a message sent to or received from a JMS provider.</li>
+<li><code>Queue</code> – an administered object that encapsulates <em>(封装)</em> the identity of a message destination for point-to-point messaging</li>
+<li><code>Topic</code> – an administered object that encapsulates the identity of a message destination for pub/sub messaging.</li>
+<li><code>Destination</code> - the common supertype of <code>Queue</code> and <code>Topic</code></li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -206,13 +141,13 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/sidan001.github.io/categories/Java/">Java</a>
+  <a class="article-category-link" href="/sidan001.github.io/categories/JMS/">JMS</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/sidan001.github.io/tags/java/">java</a>
+  <span></span> <a href="/sidan001.github.io/tags/JMS/">JMS</a>
   </div>
 
 </div>
@@ -221,7 +156,7 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/08/浮点数类型/" data-title="浮点数类型 | sidan001的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/31/JMS2-0/" data-title="JMS2.0 | sidan001的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -234,20 +169,20 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/sidan001.github.io/2016/03/08/字符类型char/" title="字符类型">
-  <strong>上一篇：</strong><br/>
-  <span>
-  字符类型</span>
+
+<div class="next">
+<a href="/sidan001.github.io/2016/03/24/BitComput/"  title="BitComput">
+ <strong>下一篇：</strong><br/> 
+ <span>BitComput
+</span>
 </a>
 </div>
-
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/03/08/浮点数类型/" data-title="浮点数类型" data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/08/浮点数类型/"></div>
+	<div class="ds-thread" data-thread-key="2016/03/31/JMS2-0/" data-title="JMS2.0" data-url="https://github.com/sidan001/sidan001.github.io/sidan001.github.io/2016/03/31/JMS2-0/"></div>
 </section>
 
 
@@ -263,7 +198,7 @@ double 类型计算时会损失精度。float 测试了下没有损失精度，�
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JMS-Domains"><span class="toc-number">1.</span> <span class="toc-text">JMS Domains</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-a-JMS-application"><span class="toc-number">2.</span> <span class="toc-text">What is a JMS application?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的Api的接口"><span class="toc-number">3.</span> <span class="toc-text">常见的Api的接口</span></a></li></ol>
  
   </div>
 
