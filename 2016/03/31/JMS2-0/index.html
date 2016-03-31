@@ -23,7 +23,9 @@ Point-to-point (PTP) messaging allows a client to send a message to another clie
 Point-to-point (PTP) messaging allows a client to send a message to another client via an intermed">
 <meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/JMSDomains.png">
 <meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/JMS_Administration.png">
-<meta property="og:updated_time" content="2016-03-31T07:19:57.167Z">
+<meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/OverviewofclassicAPI.png">
+<meta property="og:image" content="https://github.com/sidan001/sidan001.github.io/OverviewofsimplifiedAPI.png">
+<meta property="og:updated_time" content="2016-03-31T10:08:24.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JMS2.0">
 <meta name="twitter:description" content="JMS DomainsJMS supports the two major styles of messaging provided by enterprise messaging products:
@@ -105,36 +107,59 @@ Point-to-point (PTP) messaging allows a client to send a message to another clie
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JMS-Domains"><span class="toc-number">1.</span> <span class="toc-text">JMS Domains</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-a-JMS-application"><span class="toc-number">2.</span> <span class="toc-text">What is a JMS application?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的Api的接口"><span class="toc-number">3.</span> <span class="toc-text">常见的Api的接口</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JMS-Domains"><span class="toc-number">1.</span> <span class="toc-text">JMS Domains</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Architecture-体系架构"><span class="toc-number">2.</span> <span class="toc-text">Architecture(体系架构)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-a-JMS-application"><span class="toc-number">2.1.</span> <span class="toc-text">What is a JMS application?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interfaces-common-to-multiple-APIs"><span class="toc-number">2.2.</span> <span class="toc-text">Interfaces common to multiple APIs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Classic-API-interfaces"><span class="toc-number">2.3.</span> <span class="toc-text">Classic API interfaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Simplified-API-interfaces"><span class="toc-number">2.4.</span> <span class="toc-text">Simplified API interfaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference-Java-Message-Service-JMS"><span class="toc-number">2.5.</span> <span class="toc-text">reference Java Message Service (JMS)</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="JMS-Domains"><a href="#JMS-Domains" class="headerlink" title="JMS Domains"></a>JMS Domains</h2><p>JMS supports the two major styles of messaging provided by enterprise messaging products:</p>
+		<h1 id="JMS-Domains"><a href="#JMS-Domains" class="headerlink" title="JMS Domains"></a>JMS Domains</h1><p>JMS supports the two major styles of messaging provided by enterprise messaging products:</p>
 <ul>
 <li><strong>Point-to-point (PTP)</strong> messaging allows a client to send a message to another client via an intermediate abstraction called a queue.<br>The client that sends the message sends it to a specific queue. The client  that receives the message extracts it from that queue.</li>
 <li><strong>Publish and subscribe (pub/sub)</strong> messaging allows a client to send a message to multiple clients via an intermediate abstraction called a topic.<br>The client that sends the message publishes it to a specific topic. The message is then delivered to all the clients that are subscribed to that topic.</li>
 </ul>
 <p><img src="JMSDomains.png" alt="JMSDomains"></p>
-<h2 id="What-is-a-JMS-application"><a href="#What-is-a-JMS-application" class="headerlink" title="What is a JMS application?"></a>What is a JMS application?</h2><p>A JMS application is composed of the following parts:</p>
+<h1 id="Architecture-体系架构"><a href="#Architecture-体系架构" class="headerlink" title="Architecture(体系架构)"></a>Architecture(体系架构)</h1><h2 id="What-is-a-JMS-application"><a href="#What-is-a-JMS-application" class="headerlink" title="What is a JMS application?"></a>What is a JMS application?</h2><p>A JMS application is composed of the following parts:</p>
 <ul>
 <li><strong>JMS Clients</strong> - These are the Java language programs that send and receive messages.</li>
 <li><strong>Non-JMS Clients</strong> - These are clients that use a message system’s native client API<br>instead of JMS.If the application predated the availability of JMS it is likely that it will include both JMS  and non   -JMS clients.</li>
 <li><strong>Messages</strong> - Each application defines a set of messages that are used to communicate information between its clients.</li>
 <li><strong>JMS Provider</strong> - This is a messaging system that implements JMS in addition to the other administrative and control functionality required of a full featured messaging product.</li>
-<li><strong>Administered Objects</strong> - Administered objects are preconfigured JMS objects created by an administrator for the use of clients.<ul>
+<li><p><strong>Administered Objects</strong> - Administered objects are preconfigured JMS objects created by an administrator for the use of clients.</p>
+<ul>
 <li><code>ConnectionFactory</code> - This is the object a client uses to create a connection with a provider.</li>
-<li><code>Destination</code> - This is the object a client uses to specify the destination of messages it is sending and the source of messages it receives.<br>Architecture(体系架构)<br><img src="JMS_Administration.png" alt="JMS_Administration_Architecture"></li>
+<li><code>Destination</code> - This is the object a client uses to specify the destination of messages it is sending and the source of messages it receives.</li>
 </ul>
+<p><img src="JMS_Administration.png" alt="JMS_Administration_Architecture"></p>
 </li>
 </ul>
-<h2 id="常见的Api的接口"><a href="#常见的Api的接口" class="headerlink" title="常见的Api的接口"></a>常见的Api的接口</h2><p>The main interfaces common to multiple APIs are as follows:</p>
+<h2 id="Interfaces-common-to-multiple-APIs"><a href="#Interfaces-common-to-multiple-APIs" class="headerlink" title="Interfaces common to multiple APIs"></a>Interfaces common to multiple APIs</h2><p>The main interfaces common to multiple APIs are as follows:</p>
 <ul>
 <li><code>Message</code>, <code>BytesMessage</code>, <code>MapMessage</code>, <code>ObjectMessage</code>, <code>StreamMessage</code> and <code>TextMessage</code> – a message sent to or received from a JMS provider.</li>
 <li><code>Queue</code> – an administered object that encapsulates <em>(封装)</em> the identity of a message destination for point-to-point messaging</li>
 <li><code>Topic</code> – an administered object that encapsulates the identity of a message destination for pub/sub messaging.</li>
 <li><code>Destination</code> - the common supertype of <code>Queue</code> and <code>Topic</code></li>
 </ul>
-  
+<h2 id="Classic-API-interfaces"><a href="#Classic-API-interfaces" class="headerlink" title="Classic API interfaces"></a>Classic API interfaces</h2><p>The main interfaces provided by the classic API are as follows:</p>
+<ul>
+<li><code>ConnectionFactory</code> - an administered object used by a client to create a Connection. This interface is also used by the simplified API.</li>
+<li><code>Connection</code> - an active connection to a JMS provider</li>
+<li><code>Session</code> - a single-threaded context for sending and receiving messages</li>
+<li><code>MessageProducer</code> - an object created by a <code>Session</code> that is used for sending messages to a queue or topic</li>
+<li><p><code>MessageConsumer</code> - an object created by a <code>Session</code> that is used for receiving messages sent to a queue or topic</p>
+<p><img src="OverviewofclassicAPI.png" alt="Overview of classic API"></p>
+</li>
+</ul>
+<h2 id="Simplified-API-interfaces"><a href="#Simplified-API-interfaces" class="headerlink" title="Simplified API interfaces"></a>Simplified API interfaces</h2><p>The simplified API provides the same messaging functionality as the classic API but requires fewer interfaces and is simpler to use.</p>
+<p>The main interfaces provided by the simplified API are as follows:</p>
+<ul>
+<li><code>ConnectionFactory</code> - an administered object used by a client to create a <code>Connection</code>. This interface is also used by the classic API.</li>
+<li><code>JMSContext</code> - an active connection to a JMS provider and a single-threaded context for sending and receiving messages</li>
+<li><code>JMSProducer</code> - an object created by a <code>JMSContext</code> that is used for sending messages to a queue or topic</li>
+<li><p><code>JMSConsumer</code> - an object created by a <code>JMSContext</code> that is used for receiving messages sent to a queue or topic</p>
+<p><img src="OverviewofsimplifiedAPI.png" alt="Overview of simplified API"></p>
+</li>
+</ul>
+<p>In the simplified API a single <code>JMSContext</code> object encompasses the behaviour which in the classic API is provided by two separate objects, a <code>Connection</code> and a <code>Session</code>. Although this specification refers to the <code>JMSContext</code> as having an underlying “connection” and “session”, the simplified API does not use the <code>Connection</code> and <code>Session</code> interfaces.</p>
+<h2 id="reference-Java-Message-Service-JMS"><a href="#reference-Java-Message-Service-JMS" class="headerlink" title="reference Java Message Service (JMS)"></a>reference <a href="http://www.oracle.com/technetwork/java/jms/index.html" target="_blank" rel="external">Java Message Service (JMS)</a></h2>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -198,7 +223,7 @@ Point-to-point (PTP) messaging allows a client to send a message to another clie
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JMS-Domains"><span class="toc-number">1.</span> <span class="toc-text">JMS Domains</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-a-JMS-application"><span class="toc-number">2.</span> <span class="toc-text">What is a JMS application?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的Api的接口"><span class="toc-number">3.</span> <span class="toc-text">常见的Api的接口</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JMS-Domains"><span class="toc-number">1.</span> <span class="toc-text">JMS Domains</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Architecture-体系架构"><span class="toc-number">2.</span> <span class="toc-text">Architecture(体系架构)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-a-JMS-application"><span class="toc-number">2.1.</span> <span class="toc-text">What is a JMS application?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interfaces-common-to-multiple-APIs"><span class="toc-number">2.2.</span> <span class="toc-text">Interfaces common to multiple APIs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Classic-API-interfaces"><span class="toc-number">2.3.</span> <span class="toc-text">Classic API interfaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Simplified-API-interfaces"><span class="toc-number">2.4.</span> <span class="toc-text">Simplified API interfaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference-Java-Message-Service-JMS"><span class="toc-number">2.5.</span> <span class="toc-text">reference Java Message Service (JMS)</span></a></li></ol></li></ol>
  
   </div>
 
