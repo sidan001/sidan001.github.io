@@ -1,0 +1,692 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>maven3.0 | sidan001的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="sidan001">
+    
+
+    
+    <meta name="description" content="MAVEN 3.0使用Archetype生成项目骨架1mvn archetype:generate
+依赖范围就是用来控制依赖与这 3 种 classpath(编译 classpath、测试 classpath、运行 classpath)的关系,Maven 有以下几种依赖范围:
+
+Compile:编译依赖范围。如果没有指定,就会默认使用该依赖范围。使用此依赖范 围的 Maven 依赖,对于编译、测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="maven3.0">
+<meta property="og:url" content="https://github.com/sidan001/2016/04/14/maven3-0/index.html">
+<meta property="og:site_name" content="sidan001的博客">
+<meta property="og:description" content="MAVEN 3.0使用Archetype生成项目骨架1mvn archetype:generate
+依赖范围就是用来控制依赖与这 3 种 classpath(编译 classpath、测试 classpath、运行 classpath)的关系,Maven 有以下几种依赖范围:
+
+Compile:编译依赖范围。如果没有指定,就会默认使用该依赖范围。使用此依赖范 围的 Maven 依赖,对于编译、测试">
+<meta property="og:updated_time" content="2016-04-14T04:29:21.135Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="maven3.0">
+<meta name="twitter:description" content="MAVEN 3.0使用Archetype生成项目骨架1mvn archetype:generate
+依赖范围就是用来控制依赖与这 3 种 classpath(编译 classpath、测试 classpath、运行 classpath)的关系,Maven 有以下几种依赖范围:
+
+Compile:编译依赖范围。如果没有指定,就会默认使用该依赖范围。使用此依赖范 围的 Maven 依赖,对于编译、测试">
+
+    
+    <link rel="alternative" href="/atom.xml" title="sidan001的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/sidan001.github.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/sidan001.github.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/sidan001.github.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/sidan001.github.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/sidan001.github.io/"><img src="/sidan001.github.io/img/logo.png" alt="sidan001的博客" title="sidan001的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/sidan001.github.io/" title="sidan001的博客">sidan001的博客</a></h1>
+				<h2 class="blog-motto">子标题</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/sidan001.github.io/">主页</a></li>
+					
+						<li><a href="/sidan001.github.io/archives">归档</a></li>
+					
+						<li><a href="/sidan001.github.io/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:github.com/sidan001">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/sidan001.github.io/2016/04/14/maven3-0/" title="maven3.0" itemprop="url">maven3.0</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/sidan001.github.io/about" title="sidan001" target="_blank" itemprop="author">sidan001</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-14T03:15:27.000Z" itemprop="datePublished"> 发表于 2016-04-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MAVEN-3-0"><span class="toc-number">1.</span> <span class="toc-text">MAVEN 3.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Archetype生成项目骨架"><span class="toc-number">1.1.</span> <span class="toc-text">使用Archetype生成项目骨架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传递性依赖和依赖范围"><span class="toc-number">1.2.</span> <span class="toc-text">传递性依赖和依赖范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行直接运行第三方插件"><span class="toc-number">1.3.</span> <span class="toc-text">命令行直接运行第三方插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Cargo实现自动化部署"><span class="toc-number">1.4.</span> <span class="toc-text">使用Cargo实现自动化部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#部署至本地Web容器"><span class="toc-number">1.4.1.</span> <span class="toc-text">部署至本地Web容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署至远程Web容器"><span class="toc-number">1.4.2.</span> <span class="toc-text">部署至远程Web容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程仓库"><span class="toc-number">1.5.</span> <span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#远程仓库配置"><span class="toc-number">1.5.1.</span> <span class="toc-text">远程仓库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程仓库认证"><span class="toc-number">1.5.2.</span> <span class="toc-text">远程仓库认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署至远程仓库"><span class="toc-number">1.5.3.</span> <span class="toc-text">部署至远程仓库</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="MAVEN-3-0"><a href="#MAVEN-3-0" class="headerlink" title="MAVEN 3.0"></a>MAVEN 3.0</h1><h2 id="使用Archetype生成项目骨架"><a href="#使用Archetype生成项目骨架" class="headerlink" title="使用Archetype生成项目骨架"></a>使用Archetype生成项目骨架</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate</span><br></pre></td></tr></table></figure>
+<p>依赖范围就是用来控制依赖与这 3 种 classpath(编译 classpath、测试 classpath、运行 classpath)的关系,Maven 有以下几种依赖范围:</p>
+<ul>
+<li><code>Compile</code>:编译依赖范围。如果没有指定,就会默认使用该依赖范围。使用此依赖范 围的 Maven 依赖,对于编译、测试、运行三种 classpath 都有效。典型的例子是 spring-core,在编译、测试和运行的时候都需要使用该依赖。</li>
+<li><code>Test</code>:测试依赖范围。使用此依赖范围的 Maven 依赖,只对于测试 classpath 有效,在 编译主代码或者运行项目的使用时将无法使用此类依赖。典型的例子是 JUnit,它只有 在编译测试代码及运行测试的时候才需要。</li>
+<li><code>Provided</code>:已提供依赖范围。使用此依赖范围的 Maven 依赖,对于编译和测试 classpath 有效,但在运行时无效。典型的例子是 servlet-api,编译和测试项目的时候 需要该依赖,但在运行项目的时候,由于容器已经提供,就不需要 Maven 重复的引入 一遍。</li>
+<li><code>Runtime</code>:运行时依赖范围。使用此依赖范围的 Maven 依赖,对于测试和运行 classpath 有效,但在编译主代码时无效。典型的例子是 JDBC 驱动实现,项目主代码 的编译只需要 JDK 提供的 JDBC 接口,只有在执行测试或者运行项目的时候才需要实 现上述接口的具体 JDBC 驱动。</li>
+<li><code>System</code>:系统依赖范围。该依赖与 3 种 classpath 的关系,和 Provided 依赖范围完全一 致。但是,使用 System 范围的依赖时必须通过 systemPath 元素显式地指定依赖文件 的路径。由于此类依赖不是通过 Maven 仓库解析的,而且往往与本机系统绑定,可能 造成构建的不可移植,因此应该谨慎使用。systemPath 元素可以引用环境变量,如:</li>
+<li><code>Import</code>(Maven 2.0.9 及以上):导入依赖范围。该依赖范围不会对 3 种 classpath 产生 实际的影响,本书将在 8.3.3 节介绍 Maven 依赖和 dependencyManagement 的时候详 细介绍此依赖范围。<br>依赖范围与 classpath 的关系</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>依赖范围 (Scope)</th>
+<th>对于编译 classpath 有效</th>
+<th>对于测试 classpath 有效</th>
+<th>对于运行时 classpath 有效</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compile</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>spring-core</td>
+</tr>
+<tr>
+<td>test</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>Foo</td>
+</tr>
+<tr>
+<td>provided</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>servlet-api</td>
+</tr>
+<tr>
+<td>runtime</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>JDBC 驱动实现</td>
+</tr>
+<tr>
+<td>system</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>本地的,Maven 仓库之外的 类库文件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="传递性依赖和依赖范围"><a href="#传递性依赖和依赖范围" class="headerlink" title="传递性依赖和依赖范围"></a>传递性依赖和依赖范围</h2><p>最左边一行表示第一直接依赖范围,最 上面一行表示第二直接依赖范围,中间的交叉单元格则表示传递性依赖范围</p>
+<table>
+<thead>
+<tr>
+<th>—</th>
+<th>compile</th>
+<th>test</th>
+<th>provided</th>
+<th>runtime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compile</td>
+<td>compile</td>
+<td>-</td>
+<td>-</td>
+<td>runtime</td>
+</tr>
+<tr>
+<td>test</td>
+<td>test</td>
+<td>-</td>
+<td>-</td>
+<td>test</td>
+</tr>
+<tr>
+<td>test</td>
+<td>test</td>
+<td>-</td>
+<td>test</td>
+<td>test</td>
+</tr>
+<tr>
+<td>runtime</td>
+<td>runtime</td>
+<td>-</td>
+<td>-</td>
+<td>runtime</td>
+</tr>
+</tbody>
+</table>
+<h2 id="命令行直接运行第三方插件"><a href="#命令行直接运行第三方插件" class="headerlink" title="命令行直接运行第三方插件"></a>命令行直接运行第三方插件</h2><p>默认情况下,只有 <code>org.apache.maven.plugins</code> 和 <code>org.codehaus.mojo</code> 两个 <code>groupId</code> 下的插件才支持简化的命令行调用,即我们可 以运行 <code>mvn help:system</code>,但 <code>mvn jetty:run</code> 就不行了,因为 <code>maven-help-plugin</code> 的<code>groupId</code> 是 <code>org.apache.maven.plugins</code> , 而<code>jetty-maven-plugin</code> 的 <code>groupId</code> 是 <code>org.mortbay.jetty</code>,为了能在命令行直接运行 <code>mvn jetty:run</code>。</p>
+<p><strong><em>用户需要配置 <code>settings.xml</code> 如下:</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;settings&gt;</span><br><span class="line"> &lt;pluginGroups&gt;</span><br><span class="line"> 	&lt;pluginGroup&gt;org.mortbay.jetty &lt;/pluginGroup&gt; </span><br><span class="line"> &lt;/pluginGroups&gt;</span><br><span class="line"> ...</span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="使用Cargo实现自动化部署"><a href="#使用Cargo实现自动化部署" class="headerlink" title="使用Cargo实现自动化部署"></a>使用Cargo实现自动化部署</h2><p><code>cargo-maven2-plugin</code> 主要服务于自动 化部署,例如专门的测试人员只需要一条简单的 <em>Maven</em> 命令,就可以构建项目 并部署到 Web 容器中,然后进行功能测试。</p>
+<h3 id="部署至本地Web容器"><a href="#部署至本地Web容器" class="headerlink" title="部署至本地Web容器"></a>部署至本地Web容器</h3><p>Cargo 支持两种本地部署的方式,分别为 <code>standalone</code> 模式和 <code>existing</code> 模式。</p>
+<ul>
+<li><p><code>standalone</code> 模式</p>
+<p>  Cargo 会从 Web 容器的安装目录复制一份配置到用户指定的目录,然后在此基础上部署应用,每次重新构建的时候,这个    目录都会被清 空,所有配置被重新生成</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">	&lt;configuration&gt;</span><br><span class="line">		&lt;container&gt;</span><br><span class="line">			&lt;containerId&gt;tomcat6x&lt;/containerId&gt;</span><br><span class="line">			&lt;home&gt;D:\cmd\apache-tomcat-6.0.29&lt;/home&gt;</span><br><span class="line">		&lt;/container&gt;</span><br><span class="line">		&lt;configuration&gt;</span><br><span class="line">			&lt;type&gt;standalone&lt;/type&gt;</span><br><span class="line">			&lt;!-- Cargo 将 Maven 项目构建输出到 target/tomcat6x/ 目录下-- &gt;</span><br><span class="line">			&lt;home&gt;$&#123;project.build.directory&#125;/tomcat6x&lt;/home&gt;</span><br><span class="line">			&lt;properties&gt;</span><br><span class="line">				&lt;!-- Web 容器监听 8081 端口--&gt;</span><br><span class="line">				&lt;cargo.servlet.port&gt;8081&lt;/cargo.servlet.port&gt;</span><br><span class="line">		   &lt;/properties&gt;</span><br><span class="line">		&lt;/configuration&gt;</span><br><span class="line">	&lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>existing</code> 模式</p>
+<p>  要将应用直接部署到现有的 Web 容器下,需要配置 Cargo 使用 existing 模式。</p>
+<p>  用户需要指定现有的 Web 容器配置目录,然后 Cargo 会直接使用这些配置并将应用部署到其对应的位置。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">	&lt;configuration&gt;</span><br><span class="line">		&lt;container&gt;</span><br><span class="line">			&lt;containerId&gt;tomcat6x&lt;/containerId&gt;</span><br><span class="line">			&lt;home&gt;D:\cmd\apache-tomcat-6.0.29&lt;/home&gt;</span><br><span class="line">		&lt;/container&gt;</span><br><span class="line">		&lt;configuration&gt;</span><br><span class="line">			&lt;type&gt;existing&lt;/type&gt;</span><br><span class="line">			&lt;!-- Cargo 会部署的 Maven 项目到 Tomcat 的 webapps 子目录-- &gt;</span><br><span class="line">			&lt;home&gt;D:\cmd\apache-tomcat-6.0.29&lt;/home&gt;</span><br><span class="line">			&lt;properties&gt;</span><br><span class="line">			&lt;!-- Web 容器监听 8081 端口--&gt;</span><br><span class="line">			&lt;cargo.servlet.port&gt;8081&lt;/cargo.servlet.port&gt;</span><br><span class="line">		   &lt;/properties&gt;</span><br><span class="line">		&lt;/configuration&gt;</span><br><span class="line">	&lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>要让 Cargo 启动 Tomcat 并部署应用,只需要运行:</em></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mvn cargo:start</span><br></pre></td></tr></table></figure>
+<h3 id="部署至远程Web容器"><a href="#部署至远程Web容器" class="headerlink" title="部署至远程Web容器"></a>部署至远程Web容器</h3><p>对于远程部署的方式来说,<code>container</code> 元素的 <code>type</code> 子元素的值必须为 <code>remote</code><br>部署应用至远程 Web 容器的配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">	&lt;configuration&gt;</span><br><span class="line">		&lt;container&gt;</span><br><span class="line">			&lt;containerId&gt;tomcat6x&lt;/containerId&gt;</span><br><span class="line">			&lt;type&gt;remote&lt;/type&gt;</span><br><span class="line">		&lt;/container&gt;</span><br><span class="line">		&lt;configuration&gt;</span><br><span class="line">			&lt;type&gt;runtime&lt;/type&gt;</span><br><span class="line">			&lt;properties&gt;</span><br><span class="line">				&lt;cargo.remote.username&gt;username&lt;/cargo.remote.username&gt;</span><br><span class="line">				&lt;cargo.remote.password&gt;password&lt;/cargo.remote.password&gt;</span><br><span class="line">				&lt;cargo.tomcat.manager.url&gt;http://localhost:8080/manager&lt;/cargo.tomcat.manager.url&gt;</span><br><span class="line">			&lt;/properties&gt;</span><br><span class="line">		&lt;/configuration&gt;</span><br><span class="line">	&lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上述代 码中 <code>configuration</code> 的 <code>type</code> 子元素值为 <code>runtime</code>,表示既不使用独立的容器配 置,也不使用本地现有的容器配置,而是依赖于一个已运行的容器。<br><code>properties</code> 元素用来声明一些容器热部署相关的配置,例如这里的 Tomcat 6 就需要提供用 户名、密码、以及管理地址。</p>
+<p>让 Cargo 部署应用了,运行命令如下:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mvn cargo:redeploy</span><br></pre></td></tr></table></figure></p>
+<p>如果容器中已经部署了当前应用,Cargo 会首先将其卸载,然后再重新部署。</p>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><h3 id="远程仓库配置"><a href="#远程仓库配置" class="headerlink" title="远程仓库配置"></a>远程仓库配置</h3><p>项目中需要的构建存在于另外一个远程仓库中，需要配置项目的 <code>pom.xml</code> 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;repositories&gt;</span><br><span class="line">	&lt;repository&gt;</span><br><span class="line">		&lt;id&gt;sonatype-forge&lt;/id&gt;</span><br><span class="line">		&lt;name&gt;Sonatype Forge&lt;/name&gt;</span><br><span class="line">		&lt;url&gt;http://repository.sonatype.org/content/groups/forge/&lt;/url&gt;</span><br><span class="line">		&lt;releases&gt;</span><br><span class="line">			&lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">		&lt;/releases&gt;</span><br><span class="line">		&lt;snapshots&gt;</span><br><span class="line">			&lt;enabled&gt;false&lt;/enabled&gt;</span><br><span class="line">		&lt;/snapshots&gt;</span><br><span class="line">	&lt;/repository&gt;</span><br><span class="line">&lt;/repositories&gt;</span><br></pre></td></tr></table></figure>
+<p>仓库的<code>id</code>必须是唯一的</p>
+<h3 id="远程仓库认证"><a href="#远程仓库认证" class="headerlink" title="远程仓库认证"></a>远程仓库认证</h3><p>认证信息需要配置在<code>settings.xml</code>文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;servers&gt;</span><br><span class="line">    &lt;!-- server</span><br><span class="line">     | Specifies the authentication information to use when connecting to a particular server, identified by</span><br><span class="line">     | a unique name within the system (referred to by the &apos;id&apos; attribute below).</span><br><span class="line">     |</span><br><span class="line">     | NOTE: You should either specify username/password OR privateKey/passphrase, since these pairings are</span><br><span class="line">     |       used together.</span><br><span class="line">     |</span><br><span class="line">    &lt;server&gt;</span><br><span class="line">      &lt;id&gt;deploymentRepo&lt;/id&gt;</span><br><span class="line">      &lt;username&gt;repouser&lt;/username&gt;</span><br><span class="line">      &lt;password&gt;repopwd&lt;/password&gt;</span><br><span class="line">    &lt;/server&gt;</span><br><span class="line">    --&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Another sample, using keys to authenticate.</span><br><span class="line">    &lt;server&gt;</span><br><span class="line">      &lt;id&gt;siteServer&lt;/id&gt;</span><br><span class="line">      &lt;privateKey&gt;/path/to/private/key&lt;/privateKey&gt;</span><br><span class="line">      &lt;passphrase&gt;optional; leave empty if not used.&lt;/passphrase&gt;</span><br><span class="line">    &lt;/server&gt;</span><br><span class="line">    --&gt;</span><br><span class="line">  &lt;/servers&gt;</span><br></pre></td></tr></table></figure>
+<p><code>settings.xml</code>文件中 <code>server</code>元素的 <code>id</code> 必须于 <code>pom.xml</code>中需要认真的<code>repository</code>元素的 <code>id</code> 完全一致</p>
+<h3 id="部署至远程仓库"><a href="#部署至远程仓库" class="headerlink" title="部署至远程仓库"></a>部署至远程仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;distributionManagement&gt;</span><br><span class="line">	&lt;!--Information needed to deploy the artifacts generated by the </span><br><span class="line">	 project to a remote repository.</span><br><span class="line">	Content Model : all(uniqueVersion?, id?, name?, url?, layout?)--&gt;</span><br><span class="line">	&lt;repository&gt;</span><br><span class="line">		&lt;id&gt;&lt;/id&gt;</span><br><span class="line">		&lt;name&gt;&lt;/name&gt;</span><br><span class="line">		&lt;url&gt;&lt;/url&gt;</span><br><span class="line">	&lt;/repository&gt;</span><br><span class="line">	&lt;snapshotRepository&gt;</span><br><span class="line">		&lt;id&gt;&lt;/id&gt;</span><br><span class="line">		&lt;name&gt;&lt;/name&gt;</span><br><span class="line">		&lt;url&gt;&lt;/url&gt;</span><br><span class="line">	&lt;/snapshotRepository&gt;</span><br><span class="line">&lt;/distributionManagement&gt;</span><br></pre></td></tr></table></figure>
+<p><code>id</code> 必须于 <code>settings.xml</code>文件中 <code>server</code>元素的 <code>id</code> 完全一致</p>
+<p>命令：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mvn clean deploy</span><br></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/sidan001.github.io/categories/JavaCommandLineDebug/">JavaCommandLineDebug</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/sidan001.github.io/tags/Maven/">Maven</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://github.com/sidan001/sidan001.github.io/2016/04/14/maven3-0/" data-title="maven3.0 | sidan001的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/sidan001.github.io/2016/03/31/JMS2-0/"  title="JMS2.0">
+ <strong>下一篇：</strong><br/> 
+ <span>JMS2.0
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/04/14/maven3-0/" data-title="maven3.0" data-url="https://github.com/sidan001/sidan001.github.io/2016/04/14/maven3-0/"></div>
+</section>
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MAVEN-3-0"><span class="toc-number">1.</span> <span class="toc-text">MAVEN 3.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Archetype生成项目骨架"><span class="toc-number">1.1.</span> <span class="toc-text">使用Archetype生成项目骨架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传递性依赖和依赖范围"><span class="toc-number">1.2.</span> <span class="toc-text">传递性依赖和依赖范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行直接运行第三方插件"><span class="toc-number">1.3.</span> <span class="toc-text">命令行直接运行第三方插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Cargo实现自动化部署"><span class="toc-number">1.4.</span> <span class="toc-text">使用Cargo实现自动化部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#部署至本地Web容器"><span class="toc-number">1.4.1.</span> <span class="toc-text">部署至本地Web容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署至远程Web容器"><span class="toc-number">1.4.2.</span> <span class="toc-text">部署至远程Web容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程仓库"><span class="toc-number">1.5.</span> <span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#远程仓库配置"><span class="toc-number">1.5.1.</span> <span class="toc-text">远程仓库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程仓库认证"><span class="toc-number">1.5.2.</span> <span class="toc-text">远程仓库认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署至远程仓库"><span class="toc-number">1.5.3.</span> <span class="toc-text">部署至远程仓库</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="sidan001" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/sidan001.github.io/categories/JMS/" title="JMS">JMS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/sidan001.github.io/categories/Java/" title="Java">Java<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/sidan001.github.io/categories/JavaCommandLineDebug/" title="JavaCommandLineDebug">JavaCommandLineDebug<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/sidan001.github.io/categories/mysql中的锁级别/" title="mysql中的锁级别">mysql中的锁级别<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/sidan001.github.io/tags/java/" title="java">java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/sidan001.github.io/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/sidan001.github.io/tags/JMS/" title="JMS">JMS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/sidan001.github.io/tags/Binary-numbers-Converter/" title="Binary numbers Converter">Binary numbers Converter<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/sidan001.github.io/tags/Maven/" title="Maven">Maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/sidan001.github.io/tags/bitwise-operators/" title="bitwise operators">bitwise operators<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/sidan001.github.io/tags/debug/" title="debug">debug<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=2a5b1a59&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Sidan001 in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1690162052" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/sidan001" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/by/4.0" class="cc-opacity" target="_blank">
+            <img src="/sidan001.github.io/img/cc-by.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/sidan001.github.io/about" target="_blank" title="sidan001">sidan001</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/sidan001.github.io/js/jquery-2.0.3.min.js"></script>
+<script src="/sidan001.github.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/sidan001.github.io/js/gallery.js"></script>
+<script src="/sidan001.github.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"sidan001"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'Chou';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/sidan001.github.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/sidan001.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/sidan001.github.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/sidan001.github.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
